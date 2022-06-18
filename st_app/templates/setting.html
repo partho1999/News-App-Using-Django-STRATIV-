@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %}newsfeed{% endblock title %}
+
+
+{% block body %}
+        <div class="jumbotron" style="color:black">
+    
+                <h1 style ="color:gray">
+                Get The latest news on our website
+                </h1>
+  
+        </div>
+  
+{% comment %} 
+        <h2>Search Country</h2>
+
+        <form action="" method="get">
+                <input type="text" name="country">
+                <button type="submit" value="Search">Search</button>
+        </form>
+        <br>
+        <br>
+
+        <h2>Search Category</h2>
+
+        <form action="" method="get">
+                <input type="text" name="category">
+                <button type="submit" value="Search">Search</button>
+        </form> {% endcomment %}
+
+        <form action="" method="get">
+                {% csrf_token %} 
+                <div class="row">
+                        <div class="col-md-4">
+                                <select class="form-select form-select-lg mb-3" name="dropdown" aria-label=".form-select-lg example">
+                                <option selected>Select Country</option>
+                                <option value="us">Alpha</option>
+                                <option value="2">BPC</option>
+                                <option value="3">Beta</option>
+                                <option value="4">GammaOld</option>
+                                <option value="5">Gamma</option>
+                                <option value="6">Merge</option>
+                                <option value="7">NN</option>
+                                <option value="8">New</option>
+                                <option value="9">Prediction Report</option>
+                                <option value="10">Tier</option>
+                                </select>
+                        </div>
+                        <div class="col-md-4">
+                                <select class="form-select form-select-lg mb-3" name="dropdown1" aria-label=".form-select-lg example">
+                                        <option selected>Select category</option>
+                                        <option value="health">Alpha</option>
+                                        <option value="2">BPC</option>
+                                        <option value="3">Beta</option>
+                                        <option value="4">GammaOld</option>
+                                        <option value="5">Gamma</option>
+                                        <option value="6">Merge</option>
+                                        <option value="7">NN</option>
+                                        <option value="8">New</option>
+                                        <option value="9">Prediction Report</option>
+                                        <option value="10">Tier</option>
+                                </select>
+                        </div>
+                        <div class="col-md-4">
+                                <button type="submit" class="btn btn-outline-primary" value="Search">filter</button>
+                        </div>
+                </div>
+            </form>
+
+
+
+        
+
+        <div class="container">
+                <div class="row">
+                        <div class="col-md-8">
+                                {% for i in articles %}
+
+                                <div class="card rounded shadow-lg m-2" style="width: 40rem;">
+                                        <img src="{{ i.urlToImage }}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <p class="card-text">{{ i.author }}</p>
+                                        <h5 class="card-title">{{ i.title }}</h5>
+                                        <p class="card-title">{{ i.source.name }}</p>
+                                        <p class="card-text">{{ i.description }}</p>
+                                        <hr>
+                                        <small>date: {{ i.publishedAt }}</small>
+                                        <a href="{{ i.url }}" target="_blank" class="btn btn-success m-1">See News</a>
+                                        </div>
+                                </div>
+
+                                {% endfor %}
+                        </div>
+
+                        <div class="col-md-4">
+                                <h3><b>Category</b></h3>
+                                <hr>
+                                <br>
+                                <ul class="list-group">
+                                <li class="list-group-item"><a  href="{% url 'newsfeed' %}?category=technology">Technology</a></li>
+                                <div class="divider dropdown-divider"></div>
+                                <li class="list-group-item"><a  href="{% url 'newsfeed' %}?category=health">Health</a></li>
+                                <div class="divider dropdown-divider"></div>
+                                <li class="list-group-item"><a  href="{% url 'newsfeed' %}?category=Entertainment">Entertainment</a></li>
+                                <div class="divider dropdown-divider"></div>
+                                <li class="list-group-item"><a  href="{% url 'newsfeed' %}?category=Sports">Sports</a></li>
+                                <div class="divider dropdown-divider"></div>
+                                <li class="list-group-item"><a  href="{% url 'newsfeed' %}?category=Science">Science</a></li>
+                                <div class="divider dropdown-divider"></div>
+                                <li class="list-group-item"><a  href="{% url 'newsfeed' %}?category=Business">Business</a></li>
+                                </ul>
+                        </div>
+
+                </div>
+        </div>
+{% endblock body %}
