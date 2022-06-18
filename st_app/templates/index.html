@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+
+{% block body %}
+
+  {% if user.is_authenticated %}
+    <div class="jumbotron" style="color:black">
+    
+      <h1 style ="color:gray">
+        Get The latest news on our website
+      </h1>
+
+    </div>
+
+
+    <div class="container">
+      {% for new, des, i in mylist %}
+              <img src="{{ i }}" alt="">
+              <h1>news:</h1> {{ new }}
+              {{ value|linebreaks }}
+
+              <h4>description:</h4>{{ des }}
+              {{ value|linebreaks }}
+              {{ value|linebreaks }}
+
+      {% endfor %}
+    </div>
+
+
+  
+
+  {% else %}
+  
+    {% include 'banner.html' %}
+
+  {% endif %}
+  
+
+{% endblock body %}
