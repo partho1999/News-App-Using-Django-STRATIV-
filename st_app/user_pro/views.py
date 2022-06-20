@@ -127,7 +127,7 @@ def user_login(request):
         if user is not None:
             login(request, user)
             #return render(request,'index.html')
-            return redirect('home')
+            return redirect('newsfeed')
         else:
             messages.warning(request, 'invalid value! Please register first or try again...')
             return render(request,'index.html')

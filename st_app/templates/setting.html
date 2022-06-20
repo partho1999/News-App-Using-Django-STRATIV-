@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}newsfeed{% endblock title %}
+{% block title %}settings{% endblock title %}
 
 
 {% block body %}
@@ -29,45 +29,9 @@
                 <button type="submit" value="Search">Search</button>
         </form> {% endcomment %}
 
-        <form action="" method="get">
-                {% csrf_token %} 
-                <div class="row">
-                        <div class="col-md-4">
-                                <select class="form-select form-select-lg mb-3" name="dropdown" aria-label=".form-select-lg example">
-                                <option selected>Select Country</option>
-                                <option value="us">Alpha</option>
-                                <option value="2">BPC</option>
-                                <option value="3">Beta</option>
-                                <option value="4">GammaOld</option>
-                                <option value="5">Gamma</option>
-                                <option value="6">Merge</option>
-                                <option value="7">NN</option>
-                                <option value="8">New</option>
-                                <option value="9">Prediction Report</option>
-                                <option value="10">Tier</option>
-                                </select>
-                        </div>
-                        <div class="col-md-4">
-                                <select class="form-select form-select-lg mb-3" name="dropdown1" aria-label=".form-select-lg example">
-                                        <option selected>Select category</option>
-                                        <option value="health">Alpha</option>
-                                        <option value="2">BPC</option>
-                                        <option value="3">Beta</option>
-                                        <option value="4">GammaOld</option>
-                                        <option value="5">Gamma</option>
-                                        <option value="6">Merge</option>
-                                        <option value="7">NN</option>
-                                        <option value="8">New</option>
-                                        <option value="9">Prediction Report</option>
-                                        <option value="10">Tier</option>
-                                </select>
-                        </div>
-                        <div class="col-md-4">
-                                <button type="submit" class="btn btn-outline-primary" value="Search">filter</button>
-                        </div>
-                </div>
-            </form>
+        
 
+            
 
 
         
@@ -93,23 +57,76 @@
                                 {% endfor %}
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4" style="justify-content:center;">
                                 <h3><b>Category</b></h3>
                                 <hr>
                                 <br>
                                 <ul class="list-group">
-                                <li class="list-group-item"><a  href="{% url 'newsfeed' %}?category=technology">Technology</a></li>
+                                <li class="list-group-item"><a  href="{% url 'settings' %}?category=technology">Technology</a></li>
                                 <div class="divider dropdown-divider"></div>
-                                <li class="list-group-item"><a  href="{% url 'newsfeed' %}?category=health">Health</a></li>
+                                <li class="list-group-item"><a  href="{% url 'settings' %}?category=health">Health</a></li>
                                 <div class="divider dropdown-divider"></div>
-                                <li class="list-group-item"><a  href="{% url 'newsfeed' %}?category=Entertainment">Entertainment</a></li>
+                                <li class="list-group-item"><a  href="{% url 'settings' %}?category=Entertainment">Entertainment</a></li>
                                 <div class="divider dropdown-divider"></div>
-                                <li class="list-group-item"><a  href="{% url 'newsfeed' %}?category=Sports">Sports</a></li>
+                                <li class="list-group-item"><a  href="{% url 'settings' %}?category=Sports">Sports</a></li>
                                 <div class="divider dropdown-divider"></div>
-                                <li class="list-group-item"><a  href="{% url 'newsfeed' %}?category=Science">Science</a></li>
+                                <li class="list-group-item"><a  href="{% url 'settings' %}?category=Science">Science</a></li>
                                 <div class="divider dropdown-divider"></div>
-                                <li class="list-group-item"><a  href="{% url 'newsfeed' %}?category=Business">Business</a></li>
+                                <li class="list-group-item"><a  href="{% url 'settings' %}?category=Business">Business</a></li>
                                 </ul>
+                                <br>
+                                <h3><b>Filters by country</b></h3>
+                                <hr>
+                                <br>
+                                {% include 'country_dropdown.html' %}
+                                <br>
+                                <h3><b>Filters by Source</b></h3>
+                                <hr>
+                                <br>
+                                <div class="card-body">
+                                        <form action="" method="get">
+                                                {% csrf_token %} 
+                                                <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="checkbox_1" value="bbc-news" id="flexCheck" >
+                                                        <label class="form-check-label" for="flexCheck">
+                                                         checkbox
+                                                        </label>
+                                                </div>
+                                                <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="checkbox_2" value="cnn" id="flexCheck" >
+                                                        <label class="form-check-label" for="flexCheck">
+                                                         checkbox
+                                                        </label>
+                                                </div>
+                                                <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="checkbox_3" value="3" id="flexCheck" >
+                                                        <label class="form-check-label" for="flexCheck">
+                                                         checkbox
+                                                        </label>
+                                                </div>
+                                                <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="checkbox_4" value="4" id="flexCheck" >
+                                                        <label class="form-check-label" for="flexCheck">
+                                                         checkbox
+                                                        </label>
+                                                </div>
+                                                <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="checkbox_5" value="5" id="flexCheck" >
+                                                        <label class="form-check-label" for="flexCheck">
+                                                         checkbox
+                                                        </label>
+                                                </div>
+                                                <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="checkbox_6" value="6" id="flexCheck" >
+                                                        <label class="form-check-label" for="flexCheck">
+                                                         checkbox
+                                                        </label>
+                                                </div>
+                                                <button type="submit" class="btn btn-success" style="width: 22rem;" value="Search">Filter by Source</button>
+                                        </form>
+                                </div>
+                                
+                                
                         </div>
 
                 </div>

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock title %}
+{% block title %}newsfeed{% endblock title %}
 
 
 {% block body %}
@@ -40,17 +40,17 @@
                 <hr>
                 <br>
                 <ul class="list-group">
-                    <li class="list-group-item"><a  href="{% url 'home' %}?category=technology">Technology</a></li>
+                    <li class="list-group-item"><a  href="{% url 'newsfeed' %}?category=technology">Technology</a></li>
                     <div class="divider dropdown-divider"></div>
-                    <li class="list-group-item"><a  href="{% url 'home' %}?category=health">Health</a></li>
+                    <li class="list-group-item"><a  href="{% url 'newsfeed' %}?category=health">Health</a></li>
                     <div class="divider dropdown-divider"></div>
-                    <li class="list-group-item"><a  href="{% url 'home' %}?category=Entertainment">Entertainment</a></li>
+                    <li class="list-group-item"><a  href="{% url 'newsfeed' %}?category=Entertainment">Entertainment</a></li>
                     <div class="divider dropdown-divider"></div>
-                    <li class="list-group-item"><a  href="{% url 'home' %}?category=Sports">Sports</a></li>
+                    <li class="list-group-item"><a  href="{% url 'newsfeed' %}?category=Sports">Sports</a></li>
                     <div class="divider dropdown-divider"></div>
-                    <li class="list-group-item"><a  href="{% url 'home' %}?category=Science">Science</a></li>
+                    <li class="list-group-item"><a  href="{% url 'newsfeed' %}?category=Science">Science</a></li>
                     <div class="divider dropdown-divider"></div>
-                    <li class="list-group-item"><a  href="{% url 'home' %}?category=Business">Business</a></li>
+                    <li class="list-group-item"><a  href="{% url 'newsfeed' %}?category=Business">Business</a></li>
                 </ul>
                 <br>
                 <h3><b>Filters</b></h3>
