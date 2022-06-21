@@ -9,10 +9,11 @@
                 <h1 style ="color:gray">
                 Get The latest news on our website
                 </h1>
+                
   
         </div>
-  
-{% comment %} 
+{% comment %}   
+
         <h2>Search Country</h2>
 
         <form action="" method="get">
@@ -25,9 +26,9 @@
         <h2>Search Category</h2>
 
         <form action="" method="get">
-                <input type="text" name="category">
+                <input type="text" class="form-control" placeholder="search" aria-label="search"  name="keyword">
                 <button type="submit" value="Search">Search</button>
-        </form> {% endcomment %}
+        </form>  {% endcomment %}
 
         
 
@@ -58,6 +59,20 @@
                         </div>
 
                         <div class="col-md-4" style="justify-content:center;">
+                                <h3><b>Search</b></h3>
+                                <hr>
+                                <br>
+     
+                                <div class="row">
+                                        <form action="" method="get">
+                                                <div class="d-flex">
+                                                        <input type="text" class="form-control" placeholder="search" aria-label="search"  name="keyword">
+                                                        <button type="submit" class="btn btn-success" style="padding-top: 6px; margin-top: 0px;" value="Search">Search</button>
+                                                </div>
+                                        </form>
+                                        
+                                </div>
+                                
                                 <h3><b>Category</b></h3>
                                 <hr>
                                 <br>
