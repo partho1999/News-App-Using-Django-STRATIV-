@@ -5,111 +5,12 @@
 
 {% block body %}
 
-  {% if user.is_authenticated %}
-    <div class="jumbotron" style="color:black">
-    
-      <h1 style ="color:gray">
-        Get All News In one Place
-      </h1>
-
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                {% for i in articles %}
-
-                    <div class="card rounded shadow-lg m-2" style="width: 40rem;">
-                        <img src="{{ i.urlToImage }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <p class="card-text">{{ i.author }}</p>
-                        <h5 class="card-title">{{ i.title }}</h5>
-                        <p class="card-title">{{ i.source.name }}</p>
-                        <p class="card-text">{{ i.description }}</p>
-                        <hr>
-                        <small>Date: {{ i.publishedAt }}</small>
-                        <a href="{{ i.url }}" target="_blank" class="btn btn-success m-1">See News</a>
-                        </div>
-                    </div>
-
-                  {% endfor %}
-            </div>
-
-            <div class="col-md-4">
-                <h3><b>Category</b></h3>
-                <hr>
-                <br>
-                <ul class="list-group">
-                    <li class="list-group-item"><a  href="{% url 'home' %}?category=technology">Technology</a></li>
-                    <div class="divider dropdown-divider"></div>
-                    <li class="list-group-item"><a  href="{% url 'home' %}?category=health">Health</a></li>
-                    <div class="divider dropdown-divider"></div>
-                    <li class="list-group-item"><a  href="{% url 'home' %}?category=Entertainment">Entertainment</a></li>
-                    <div class="divider dropdown-divider"></div>
-                    <li class="list-group-item"><a  href="{% url 'home' %}?category=Sports">Sports</a></li>
-                    <div class="divider dropdown-divider"></div>
-                    <li class="list-group-item"><a  href="{% url 'home' %}?category=Science">Science</a></li>
-                    <div class="divider dropdown-divider"></div>
-                    <li class="list-group-item"><a  href="{% url 'home' %}?category=Business">Business</a></li>
-                </ul>
-                <br>
-                <h3><b>Filters</b></h3>
-                <hr>
-                <br>
-                <form action="" method="get">
-                  {% csrf_token %} 
-                  
-                  <div class="col-md-14">
-                          <select class="form-select form-select-lg mb-3" name="country" aria-label=".form-select-lg example">
-                          <option selected>Select Country</option>
-                          <option value="us">USA</option>
-                          <option value="in">India</option>
-                          <option value="3">Beta</option>
-                          <option value="4">GammaOld</option>
-                          <option value="5">Gamma</option>
-                          <option value="6">Merge</option>
-                          <option value="7">NN</option>
-                          <option value="8">New</option>
-                          <option value="9">Prediction Report</option>
-                          <option value="10">Tier</option>
-                          </select>
-                  </div>
-                  <button type="submit" class="btn btn-success" style="width: 22rem;" value="Search">Filter by Country</button>
-                          
-                  
-                </form>
-                <hr>
-                <br>
-                <form action="" method="get">
-                  {% csrf_token %} 
-                  
-                  <div class="col-md-14">
-                          <select class="form-select form-select-lg mb-3" name="source" aria-label=".form-select-lg example">
-                          <option selected>Select Source</option>
-                          <option value="bbc-news">BBC News</option>
-                          <option value="cnn">CNN</option>
-                          <option value="3">Beta</option>
-                          <option value="4">GammaOld</option>
-                          <option value="5">Gamma</option>
-                          <option value="6">Merge</option>
-                          <option value="7">NN</option>
-                          <option value="8">New</option>
-                          <option value="9">Prediction Report</option>
-                          <option value="10">Tier</option>
-                          </select> 
-                  </div>
-                  <button type="submit" class="btn btn-success" style="width: 22rem;" value="Search">Filter by Source</button>
-          
-                </form>     
-            </div>
-
-        </div>
-    </div>
-  {% else %}
   
-    {% include 'banner.html' %}
+  
+  {% include 'banner.html' %}
+  
 
-  {% endif %}
+  
   
 
 {% endblock body %}

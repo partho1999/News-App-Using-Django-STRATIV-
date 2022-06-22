@@ -8,6 +8,7 @@ import os.path
 # from os import path
 import pandas as pd
 import os
+from math import nan, isnan
 
 API_KEY = 'f9ffadbb22b046e6b7634587e13969cc'
 
@@ -36,7 +37,7 @@ def Newsfeed(request):
      'Searched_source': sourcelst
     })
     filename ="media/"+username+".csv"
-    if path.exists(filename) :
+    if os.path.exists(filename) :
         print("file exists")
         path = "media/"
         dir_list = os.listdir(path)
@@ -86,22 +87,70 @@ def Newsfeed(request):
         print(filtered_lst[0]) 
 
         pdf=pd.read_csv(path+filtered_lst[0])
+        #pdf['Searched_country']= pdf['Searched_country'].fillna(0)
         print(pdf)
-        print(pdf["Searched_country"].values[0])
-        cntry = pdf["Searched_country"].values[0]
-
-        if cntry is None:
-            url = f'https://newsapi.org/v2/top-headlines?country={cntry}&apiKey={API_KEY}'
-            response = requests.get(url)
-            data = response.json()
-            articles = data['articles']
-            
-        else:
-            for item in categories:
-                url = f'https://newsapi.org/v2/top-headlines?category={item}&apiKey={API_KEY}'
+        #print(type(pdf["Searched_country"]))
+        lst = pdf['Searched_country'].to_list()
+        
+        
+        cntry =pdf["Searched_country"].iloc[-1]
+        
+        print("cntry value:",cntry)
+        
+        result =[]
+        for val in lst:
+            print(type(val))
+            if type(val) == str:
+                result.append(val)
+        print("result",result)
+        
+        if result:
+            print("not null")
+            articles=[]
+            for item in result:
+                url = f'https://newsapi.org/v2/top-headlines?country={item}&apiKey={API_KEY}'
                 response = requests.get(url)
                 data = response.json()
-                articles = data['articles']
+                article = data['articles']
+                for i in article:
+                    articles.append(i)
+        else:
+            print("null")
+            articles=[]
+            for item in categories:
+                    url = f'https://newsapi.org/v2/top-headlines?category={item}&apiKey={API_KEY}'
+                    response = requests.get(url)
+                    data = response.json()
+                    article = data['articles']
+                    for i in article:
+                            articles.append(i)
+
+        # if lst != 0:
+        #     res=[]
+        #     print("lst is not none")
+        #     for val in lst:
+        #         if val != 0:
+        #             res.append(val)
+        #     articles=[]
+        #     for item in res:
+        #         url = f'https://newsapi.org/v2/top-headlines?country={cntry}&apiKey={API_KEY}'
+        #         response = requests.get(url)
+        #         data = response.json()
+        #         article = data['articles']
+        #         for i in article:
+        #             articles.append(i)
+            
+            
+        # else:
+        #     print("im in else")
+        #     articles=[]
+        #     for item in categories:
+        #         url = f'https://newsapi.org/v2/top-headlines?category={item}&apiKey={API_KEY}'
+        #         response = requests.get(url)
+        #         data = response.json()
+        #         article = data['articles']
+        #         for i in article:
+        #             articles.append(i)
    
     
         
@@ -119,7 +168,7 @@ def Settings(request):
     keyword = request.GET.get('keyword')
     print(keyword)
     username = request.user.username
-    categories = ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology']
+    categories = ['business', 'entertainment',  'health', 'science', 'sports', 'technology']
     option_1 = request.GET.get('task_1')
     option_2 = request.GET.get('task_2')
     option_3 = request.GET.get('task_3')
@@ -220,7 +269,7 @@ def Settings(request):
                 article= top['articles']
                 for i in article:
                     articles.append(i)
-    elif option_lst != [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]:
+    elif option_lst != [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]:
         res = []
         for val in option_lst:
             if val != None :
@@ -262,22 +311,42 @@ def Settings(request):
         print(filtered_lst[0]) 
 
         pdf=pd.read_csv(path+filtered_lst[0])
+        #pdf['Searched_country']= pdf['Searched_country'].fillna(0)
         print(pdf)
-        print(pdf["Searched_country"].values[0])
-        cntry = pdf["Searched_country"].values[0]
-
-        if cntry is None:
-            url = f'https://newsapi.org/v2/top-headlines?country={cntry}&apiKey={API_KEY}'
-            response = requests.get(url)
-            data = response.json()
-            articles = data['articles']
-            
-        else:
-            for item in categories:
-                url = f'https://newsapi.org/v2/top-headlines?category={item}&apiKey={API_KEY}'
+        #print(type(pdf["Searched_country"]))
+        lst = pdf['Searched_country'].to_list()
+        
+        cntry =pdf["Searched_country"].iloc[-1]
+        
+        print("cntry value:",cntry)
+        
+        result =[]
+        for val in lst:
+            print(type(val))
+            if type(val) == str:
+                result.append(val)
+        print(result)
+        if result:
+            print("not null")
+            articles=[]
+            for item in result:
+                url = f'https://newsapi.org/v2/top-headlines?country={item}&apiKey={API_KEY}'
                 response = requests.get(url)
                 data = response.json()
-                articles = data['articles']
+                article = data['articles']
+                for i in article:
+                    articles.append(i)
+        else:
+            print("null")
+            articles=[]
+            for item in categories:
+                    url = f'https://newsapi.org/v2/top-headlines?category={item}&apiKey={API_KEY}'
+                    response = requests.get(url)
+                    data = response.json()
+                    article = data['articles']
+                    for i in article:
+                            articles.append(i)
+
    
     
         
