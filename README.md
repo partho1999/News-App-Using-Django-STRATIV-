@@ -1,5 +1,5 @@
 # News-App-Using-Django-STRATIV-
-A news apps website is built using Django framework.it's a ueser friendly news app which can be search news by country, source, category and keyword. user can also search mupltiple at a time.
+A news apps website is built using Django framework. it's a ueser friendly news app which can be search news by country, source, category and keyword. user can also search mupltiple at a time.
 
 ## Installation
 
