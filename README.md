@@ -27,6 +27,7 @@ Also create the superuser
 ```bash
 python manage.py runserver createsuperuser
 ```
+Note : For Multiple Seach Please Put Comma without Space 
 ## Register & Login 
 please Register first and then Login for getting news
 
